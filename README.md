@@ -21,3 +21,18 @@ SELECT EXTRACT(MONTH FROM payment_date) AS month,
 FROM payment
 GROUP BY month
 ORDER BY month;
+```
+
+### **1. Films by Language (2010 and G-rated)**
+This query returns a list of G-rated films released in 2010, grouped by language.
+ ```
+SELECT name, 
+       STRING_AGG(title, ',') AS film_titles
+FROM film f
+INNER JOIN language l
+  ON f.language_id = l.language_id
+WHERE release_year = '2010'
+  AND rating = 'G'
+GROUP BY name;
+
+```
